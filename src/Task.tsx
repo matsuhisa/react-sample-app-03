@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 interface Task {
   id: number
@@ -10,12 +10,21 @@ interface TaskProps {
   task: Task
 }
 
-const Task: FC<TaskProps> = ({ task }) => (
-  <>
-    <div>{task.id}</div>
-    <div>{task.subject}</div>
-    {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
-  </>
-)
+const Task: FC<TaskProps> = ({ task }) => {
+  const [count, setCount] = useState(0)
+
+  const up = () =>(
+    setCount(count + 1)
+  )
+
+  return(
+    <>
+      <div onClick={up}>{count}</div>
+      <div>{task.id}</div>
+      <div>{task.subject}</div>
+      {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
+    </>
+  )
+}
 
 export default Task
