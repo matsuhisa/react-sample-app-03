@@ -7,6 +7,21 @@ export default {
   component: Task,
 }
 
+const TaskDatum = {
+  id: 1,
+  subject: "タスクのタイトル",
+}
+
+const TaskFullDatum = {
+  id: 2,
+  subject: "タスクのタイトル",
+  description: "中身もあります"
+}
+
 export const Default = () => (
-  <Task></Task>
+  <Task task={TaskDatum}></Task>
+)
+
+export const Full = () => (
+  <Task task={TaskFullDatum}></Task>
 )

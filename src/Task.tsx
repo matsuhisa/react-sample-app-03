@@ -1,11 +1,20 @@
 import React, { FC } from 'react'
 
-interface TaskProps {
+interface Task {
+  id: number
+  subject: string
+  description?: string
 }
 
-const Task: FC<TaskProps> = () => (
+interface TaskProps {
+  task: Task
+}
+
+const Task: FC<TaskProps> = ({ task }) => (
   <>
-    タスクです
+    <div>{task.id}</div>
+    <div>{task.subject}</div>
+    {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
   </>
 )
 
