@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 
 interface Task {
   id: number
@@ -16,6 +16,11 @@ const Task: FC<TaskProps> = ({ task }) => {
   const up = () =>(
     setCount(count + 1)
   )
+
+  useEffect(() => {
+    console.log(document.title)
+    document.title = `タイトル${count}`
+  })
 
   return(
     <>
