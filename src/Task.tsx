@@ -17,18 +17,23 @@ const Task: FC<TaskProps> = ({ task }) => {
     setCount(count + 1)
   )
 
-  useEffect(() => {
-    console.log(document.title)
-    document.title = `タイトル${count}`
-  })
+  const clickFunction = (e: React.MouseEvent) => {
+    e.preventDefault()
+    console.log(`${e} => The link was clicked.`)
+  }
+
+  // useEffect(() => {
+  //   console.log(document.title)
+  //   document.title = `タイトル${count}`
+  // })
 
   return(
-    <>
+    <a href="#foo" onClick={clickFunction}>
       <div onClick={up}>{count}</div>
       <div>{task.id}</div>
       <div>{task.subject}</div>
       {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
-    </>
+    </a>
   )
 }
 
