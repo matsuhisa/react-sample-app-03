@@ -10,12 +10,14 @@ export default {
 const TaskDatum = {
   id: 1,
   subject: "タスクのタイトル",
+  pinned: true,
 }
 
 const TaskFullDatum = {
   id: 2,
   subject: "タスクのタイトル",
-  description: "中身もあります"
+  description: "中身もあります",
+  pinned: false,
 }
 
 export const Default = () => (

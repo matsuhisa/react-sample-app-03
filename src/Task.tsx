@@ -1,9 +1,11 @@
 import React, { FC, useState } from 'react'
+import styled from 'styled-components'
 
 interface Task {
   id: number
   subject: string
   description?: string
+  pinned: boolean
 }
 
 interface TaskProps {
@@ -11,20 +13,34 @@ interface TaskProps {
 }
 
 const Task: FC<TaskProps> = ({ task }) => {
-  const [count, setCount] = useState(0)
+  const [pinned, setPin] = useState(task.pinned)
 
-  const up = () =>(
-    setCount(count + 1)
-  )
+  const pin = () => {
+    setPin(pinned === true ? false:true)
+  }
 
   return(
-    <>
-      <div onClick={up}>{count}</div>
+    <Task1 onClick={pin} pinned={pinned}>
+      <div aria-label={`${task.pinned}`}>ここ</div>
       <div>{task.id}</div>
       <div>{task.subject}</div>
       {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
-    </>
+    </Task1>
   )
 }
+
+const Task1 = styled.div<{pinned: boolean}>`
+  border: 1px solid red;
+  padding: .4em;
+  &:hover {
+    background-color: blue;
+  };
+
+  & + & {
+    margin-top: 2em;
+  };
+
+  background: ${ props => props.pinned ? 'white' : 'palevioletred'};
+`
 
 export default Task
