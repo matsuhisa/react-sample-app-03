@@ -20,8 +20,7 @@ const Task: FC<TaskProps> = ({ task }) => {
   }
 
   return(
-    <Task1 onClick={pin} pinned={pinned}>
-      <div aria-label={`${task.pinned}`}>ここ</div>
+    <Task1 pinned={pinned} onClick={pin} aria-label={`${task.pinned}`} >
       <div>{task.id}</div>
       <div>{task.subject}</div>
       {task.description == '' ? <div>不明</div> : <div>{task.description}</div>}
